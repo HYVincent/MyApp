@@ -1,4 +1,4 @@
-package com.vincent.myapp.base;
+package com.vincent.myapp.huawei.base;
 
 /**
  * Copyright (C), 2018-2019, 重庆咕点科技有限公司

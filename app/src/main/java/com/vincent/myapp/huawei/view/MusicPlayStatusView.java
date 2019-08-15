@@ -1,4 +1,4 @@
-package com.vincent.myapp.view;
+package com.vincent.myapp.huawei.view;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -14,7 +14,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 
-import com.vincent.myapp.R;
+import com.vincent.myapp.huawei.R;
 
 /**
  * Copyright (C), 2018-2019, 重庆咕点科技有限公司

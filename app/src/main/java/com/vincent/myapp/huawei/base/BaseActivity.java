@@ -1,4 +1,4 @@
-package com.vincent.myapp.base;
+package com.vincent.myapp.huawei.base;
 
 import android.os.Build;
 import android.os.Bundle;
@@ -18,7 +18,7 @@ import androidx.core.content.ContextCompat;
 import com.common.mylibrary.dialog.LoadingDialog;
 import com.common.mylibrary.util.ActivityUtils;
 import com.common.mylibrary.util.MyToastUtil;
-import com.vincent.myapp.R;
+import com.vincent.myapp.huawei.R;
 
 /**
  * Copyright (C), 2018-2019, 重庆咕点科技有限公司

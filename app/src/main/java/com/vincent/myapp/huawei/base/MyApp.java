@@ -1,4 +1,4 @@
-package com.vincent.myapp.base;
+package com.vincent.myapp.huawei.base;
 
 import android.app.Activity;
 import android.app.Application;
@@ -8,7 +8,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.common.mylibrary.CommonUtil;
-import com.common.mylibrary.util.MyLoginUtils;
+import com.common.mylibrary.util.MyLogUtils;
+import com.vincent.myapp.huawei.base.AppConfig;
 
 /**
  * Copyright (C), 2018-2019, 重庆咕点科技有限公司
@@ -23,44 +24,44 @@ public class MyApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        CommonUtil.getInstance().init(this,AppConfig.SHARED_NAME);
+        CommonUtil.getInstance().init(this, AppConfig.SHARED_NAME);
         registerActivityLifecycle();
     }
     private void registerActivityLifecycle() {
         registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
             @Override
             public void onActivityCreated(@NonNull Activity activity, @Nullable Bundle bundle) {
-                MyLoginUtils.d(tag,activity.getClass().getSimpleName() + "  创建");
+                MyLogUtils.d(tag,activity.getClass().getSimpleName() + "  创建");
             }
 
             @Override
             public void onActivityStarted(@NonNull Activity activity) {
-                MyLoginUtils.d(tag,activity.getClass().getSimpleName() + "  开始");
+                MyLogUtils.d(tag,activity.getClass().getSimpleName() + "  开始");
             }
 
             @Override
             public void onActivityResumed(@NonNull Activity activity) {
-                MyLoginUtils.d(tag,activity.getClass().getSimpleName() + "  显示");
+                MyLogUtils.d(tag,activity.getClass().getSimpleName() + "  显示");
             }
 
             @Override
             public void onActivityPaused(@NonNull Activity activity) {
-                MyLoginUtils.d(tag,activity.getClass().getSimpleName() + "  暂停");
+                MyLogUtils.d(tag,activity.getClass().getSimpleName() + "  暂停");
             }
 
             @Override
             public void onActivityStopped(@NonNull Activity activity) {
-                MyLoginUtils.d(tag,activity.getClass().getSimpleName() + "  停止");
+                MyLogUtils.d(tag,activity.getClass().getSimpleName() + "  停止");
             }
 
             @Override
             public void onActivitySaveInstanceState(@NonNull Activity activity, @NonNull Bundle bundle) {
-                MyLoginUtils.d(tag,activity.getClass().getSimpleName() + "  onActivitySaveInstanceState");
+                MyLogUtils.d(tag,activity.getClass().getSimpleName() + "  onActivitySaveInstanceState");
             }
 
             @Override
             public void onActivityDestroyed(@NonNull Activity activity) {
-                MyLoginUtils.d(tag,activity.getClass().getSimpleName() + "  移除");
+                MyLogUtils.d(tag,activity.getClass().getSimpleName() + "  移除");
             }
         });
     }
