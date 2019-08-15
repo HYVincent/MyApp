@@ -132,6 +132,7 @@
     <dimen name="size_260">260dp</dimen>
     <dimen name="size_271">271dp</dimen>
     <dimen name="size_300">300dp</dimen>
+    <dimen name="size_400">400dp</dimen>
 
     <dimen name="size_1sp">1sp</dimen>
     <dimen name="text_size_9sp">9sp</dimen>
