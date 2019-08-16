@@ -38,7 +38,7 @@ public class TestActivity extends BaseActivity implements PermissionHelper.Permi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
         ButterKnife.bind(this);
-        permissionHelper = new PermissionHelper(TestActivity.this);
+//        permissionHelper = new PermissionHelper(TestActivity.this);
         initFragment();
     }
 
@@ -49,7 +49,7 @@ public class TestActivity extends BaseActivity implements PermissionHelper.Permi
         transaction.show(testFragment);
         transaction.commit();
     }
-    private PermissionHelper permissionHelper;
+    /*private PermissionHelper permissionHelper;
     private MyPermissionListener permissionListener;
     public void checkPermission(MyPermissionListener permissionListener) {
         this.permissionListener = permissionListener;
@@ -75,5 +75,5 @@ public class TestActivity extends BaseActivity implements PermissionHelper.Permi
     @Override
     public void doAfterDenied(String... permission) {
         permissionListener.doAfterDenied(permission);
-    }
+    }*/
 }

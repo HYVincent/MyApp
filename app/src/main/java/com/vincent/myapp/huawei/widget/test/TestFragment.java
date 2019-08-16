@@ -1,5 +1,6 @@
 package com.vincent.myapp.huawei.widget.test;
 
+import android.Manifest;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -52,23 +53,22 @@ public class TestFragment extends BaseFragment {
             toastMsg("testActivity is null!!!");
             return;
         }
-        testActivity.checkPermission(new MyPermissionListener() {
+        testActivity.checkNeedPermission("我就是要权限", new MyPermissionListener() {
             @Override
             public void action() {
-
+                toastMsg("好了，可以干了");
             }
 
             @Override
             public void doAfterGrand(String... permission) {
-                MyLogUtils.e(TAG,"通过");
+                toastMsg("通过【"+permission[0]+"】");
             }
 
             @Override
             public void doAfterDenied(String... permission) {
-                MyLogUtils.e(TAG,"未通过");
+                toastMsg("拒绝【"+permission[0]+"】");
             }
-        });
-
+        }, Manifest.permission.WRITE_EXTERNAL_STORAGE);
     }
 
     @Override

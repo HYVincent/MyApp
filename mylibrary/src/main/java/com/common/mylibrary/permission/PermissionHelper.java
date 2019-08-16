@@ -107,11 +107,8 @@ public class PermissionHelper {
                         break;
                     }
                 }
-
                 if (allGranted && mListener != null) {
-
                     mListener.doAfterGrand((String[])mPermissionList.toArray());
-
                 }else if(!allGranted && mListener != null){
                     mListener.doAfterDenied((String[])mPermissionList.toArray());
                 }

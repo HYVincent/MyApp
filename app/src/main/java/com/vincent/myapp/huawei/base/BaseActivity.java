@@ -11,11 +11,14 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.common.mylibrary.dialog.LoadingDialog;
+import com.common.mylibrary.permission.MyPermissionListener;
+import com.common.mylibrary.permission.PermissionHelper;
 import com.common.mylibrary.util.ActivityUtils;
 import com.common.mylibrary.util.MyToastUtil;
 import com.vincent.myapp.huawei.R;
@@ -28,16 +31,45 @@ import com.vincent.myapp.huawei.R;
  * Description: 描述
  * History:
  */
-public abstract class BaseActivity extends AppCompatActivity {
+public class BaseActivity extends AppCompatActivity implements PermissionHelper.PermissionListener {
 
+    private PermissionHelper permissionHelper;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActivityUtils.addActivity(this);
-
+        initPermission();
     }
 
+    private void initPermission() {
+        permissionHelper = new PermissionHelper(this);
+    }
+    private MyPermissionListener myPermissionListener;
+    public void checkNeedPermission(String hintPermissionMsg,MyPermissionListener myPermissionListener,String...permission){
+        this.myPermissionListener = myPermissionListener;
+        if(PermissionHelper.hasPermissions(this,permission)){
+            myPermissionListener.action();
+        }else {
+            permissionHelper.requestPermissions(hintPermissionMsg,this,permission);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        permissionHelper.handleRequestPermissionsResult(requestCode,permissions,grantResults);
+    }
+
+    @Override
+    public void doAfterGrand(String... permission) {
+        myPermissionListener.doAfterGrand(permission);
+    }
+
+    @Override
+    public void doAfterDenied(String... permission) {
+        myPermissionListener.doAfterDenied(permission);
+    }
 
     /**
      * 修改系统状态栏字体的颜色
@@ -162,6 +194,8 @@ public abstract class BaseActivity extends AppCompatActivity {
             }
         },time);
     }
+
+
 
     public interface ActionListener{
 
