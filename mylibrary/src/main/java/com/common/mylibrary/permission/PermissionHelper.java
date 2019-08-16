@@ -1,4 +1,4 @@
-package com.common.mylibrary.util;
+package com.common.mylibrary.permission;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
